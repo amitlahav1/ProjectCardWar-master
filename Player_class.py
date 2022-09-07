@@ -16,14 +16,13 @@ class Player:
         self.player_cards_amount = player_cards_amount
         self.cards_player_list = []
 
-    def __str__(self):
-        return f"player hand{self.cards_player_list},main deck : {DeckOfCards.__str__(d)} "
+
 
 # the player get the amount of cards that he should :  10-26 cards :)
     def set_hand(self,deck:DeckOfCards):
 
         for i in range (self.player_cards_amount):
-            self.cards_player_list.append(d.del_one())
+            self.cards_player_list.append(deck.del_one())
 
 
 #get a random card  and deletes it
@@ -37,13 +36,3 @@ class Player:
 
 
 
-# d = DeckOfCards()
-# player1 = Player('amit', 15)
-# player2 = Player('elior', 26)
-#
-# d.cards_shuffle()
-# print(player1.set_hand(d))
-# print(d)
-# print(player1.get_card())
-# print(player1.cards_player_list)
-# player2.add_card()

@@ -30,8 +30,7 @@ class Card:
 
 
     def __gt__(self, other):
-        if self.value==1:
-            self.value=14
+
         if type(other) == Card:
             if self.value > other.value:
                 return True
@@ -44,8 +43,3 @@ class Card:
             raise TypeError("other must to be type card!!!!")
 
 
-# h2 =Card('Heart', 2)
-# c2 =Card('Club', 2)
-
-# if c2> h2:
-#     print(c2)

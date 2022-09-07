@@ -1,4 +1,3 @@
-from Card_Class import Card
 from random import randint
 import random
 
@@ -11,6 +10,10 @@ class DeckOfCards:
                 self.deck52.append((s, v))
     def __str__(self):
         return f"main deck : {self.deck52}"
+    def ace_power(self):
+        for card in self.deck52:
+            if card.value == 1:
+                card.value = 14
 
     def cards_shuffle(self):
         random.shuffle(self.deck52)
@@ -22,9 +25,3 @@ class DeckOfCards:
 
 
 
-# d = DeckOfCards()
-# d.cards_shuffle()
-# print(d.deck52)
-# print(d.del_one())
-#
-# print(d.deck52)
