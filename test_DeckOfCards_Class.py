@@ -50,6 +50,6 @@ class TestDeckOfCards(TestCase):
 #chek if the function del return the card. valid
     def test_return_card_del_valid_2(self):
         card_1 = Card("Spade", 5)
-        with patch ('DeckOfCards_Class.DeckOfCards.del_one()') as mock_card:
+        with patch ('DeckOfCards_Class.DeckOfCards.del_one') as mock_card:
             mock_card.return_value = card_1
             self.assertEqual(self.deck_valid.del_one(), card_1)

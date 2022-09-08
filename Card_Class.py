@@ -5,7 +5,7 @@ class Card:
             raise TypeError("suit must to be type str!!!!")
         if type(value) != int:
             raise TypeError("value must to be type int!!!")
-        if value <= 0 or value > 13 and value!=14:
+        if value <= 0 or value > 13 and value != 14:
             raise ValueError("value must to be between 1-13!!!")
         if suit != 'Heart' and suit != 'Spade' and suit != 'Diamond' and suit != 'Club':
             raise ValueError('suit is invalid')
