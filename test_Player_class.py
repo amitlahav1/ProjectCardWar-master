@@ -25,7 +25,7 @@ class TestPlayer(TestCase):
     # test the way python convert int to str (from input)
     def test__init__valid_(self):
         player = Player(123, 26)
-        self.assertEqual(player.name,"player1")
+        self.assertEqual(player.name,123)
 
     def test__init__valid_3(self):
         player = Player('elior', 26)

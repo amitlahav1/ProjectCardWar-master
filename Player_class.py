@@ -8,8 +8,6 @@ class Player:
         # define player object in Player class.
         if name == "":  # (name)
             name = "player1"
-        if type(name) != str:
-            name = "player1"
         if type(player_cards_amount) != int:
             player_cards_amount = 26
         if 10 > player_cards_amount or player_cards_amount > 26:
