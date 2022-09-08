@@ -57,6 +57,7 @@ else:
     print(f"the winner in the game is.... {player_2.name}, he winner in {count_win_player1} rounds!")
     print(f"the cards of {player_2.name}:,{game.player2.cards_player_list}")
 
+#hello
 
 
 
