@@ -1,13 +1,15 @@
-from unittest import TestCase
-from DeckOfCards_Class import
+from unittest import TestCase, mock
+import Player_class
+from DeckOfCards_Class import DeckOfCards
 from Player_class import Player
-
+from random import randint
 
 class TestPlayer(TestCase):
 
     # set up
     def setUp(self) -> None:
-        player = Player('elior', 26)
+        self.player = Player('elior', 26)
+        self.deck52 = DeckOfCards()
 
     # test the functionality of __init__
     def test__init__valid_1(self):
@@ -45,13 +47,37 @@ class TestPlayer(TestCase):
         player = Player('elior', '9')
         self.assertEqual(player.player_cards_amount, 26)
 
-    # =========================test_set_hand==========================================
-   @mock.patch('DeckOfCards_Class.DeckOfCards.del_one()', return_value = [])
-    def test_set_hand_valid_1:
+    # =========================test_set_hand========================================== #
+
+    # test the amount of cards that this function gives to this player
+    #  and that he pops a card out of the main deck
+    @mock.patch('DeckOfCards_Class.DeckOfCards.del_one', return_value = ('Diamond', 2))
+    def test_set_hand_valid_1(self, del_mock):
+        self.player.set_hand(self.deck52)
+        self.assertTrue(self.player.cards_player_list.count(('Diamond', 2)),10)
+        self.assertEqual(len(self.player.cards_player_list),self.player.player_cards_amount)
+
+    # test the amount of cards that this function gives to this player
+    #  and that he pops a card out of the main deck (invalid)
+    @mock.patch('DeckOfCards_Class.DeckOfCards.del_one', return_value = ('Diamond', 2))
+    def test_set_hand_invalid_1(self, del_mock):
+        self.player.set_hand(self.deck52)
+        self.assertFalse(self.player.cards_player_list.count(('Club', 5)),10)
+        self.assertEqual(len(self.player.cards_player_list),self.player.player_cards_amount)
 
 
-    def test_get_card(self):
-        self.fail()
+# =======================================test_get_card================================= #
 
-    def test_add_card(self):
-        self.fail()
+    #make sure that the function picks a card and deletes it
+    def test_get_card_valid_1(self):
+        self.player.set_hand(self.deck52)
+        start_hand = len(self.player.cards_player_list)
+        self.player.get_card()
+        after_turn_hand = len(self.player.cards_player_list)
+
+        self.assertEqual(after_turn_hand + 1,start_hand)
+        card = self.player.get_card()
+        self.assertNotIn(self.player.get_card(),self.player.cards_player_list)
+
+    # def test_add_card(self):
+    #     self.fail()
