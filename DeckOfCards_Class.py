@@ -4,7 +4,7 @@ from Card_Class import Card
 
 
 class DeckOfCards:
-    def __init__(self,):
+    def __init__(self):
         # define deck of cards objects.
         self.deck52 = []
         for s in "Diamond", "Spade", "Heart", "Club":
