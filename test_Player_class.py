@@ -2,6 +2,7 @@ from unittest import TestCase, mock
 import Player_class
 from DeckOfCards_Class import DeckOfCards
 from Player_class import Player
+from Card_Class import Card
 from random import randint
 
 class TestPlayer(TestCase):
@@ -22,10 +23,9 @@ class TestPlayer(TestCase):
         self.assertEqual(player.name, 'player1')
 
     # test the way python convert int to str (from input)
-    # bug?
-    # def test__init__???valid???_***(self):
-    #     player = Player(123, 26)
-    #     self.assertEqual(player.name, '123')
+    def test__init__valid_(self):
+        player = Player(123, 26)
+        self.assertEqual(player.name,"player1")
 
     def test__init__valid_3(self):
         player = Player('elior', 26)
@@ -68,7 +68,7 @@ class TestPlayer(TestCase):
 
 # =======================================test_get_card================================= #
 
-    #make sure that the function picks a card and deletes it
+    #make sure that the function picks a card and deletes it from players hand
     def test_get_card_valid_1(self):
         self.player.set_hand(self.deck52)
         start_hand = len(self.player.cards_player_list)
@@ -79,5 +79,8 @@ class TestPlayer(TestCase):
         card = self.player.get_card()
         self.assertNotIn(self.player.get_card(),self.player.cards_player_list)
 
-    # def test_add_card(self):
-    #     self.fail()
+# ===============================test_add_card====================================== #
+    def test_add_card_valid_1(self):
+        card = Card('Club', 8)
+        self.player.add_card(card)
+        self.assertIn(card,self.player.cards_player_list)
