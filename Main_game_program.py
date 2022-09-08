@@ -58,7 +58,7 @@ else:
     print(f"the cards of {player_2.name}:,{game.player2.cards_player_list}")
 
 #hello
-
+#test
 
 
 
