@@ -4,7 +4,7 @@ from Card_Class import Card
 
 
 class DeckOfCards:
-    def __init__(self,):
+    def __init__(self):
         # define deck of cards objects.
         self.deck52 = []
         for s in "Diamond", "Spade", "Heart", "Club":
@@ -29,4 +29,3 @@ class DeckOfCards:
     def del_one(self):
         # delete a random card from the deck, (delete mean give to player ====> in later function).
         return self.deck52.pop(randint(0, len(self.deck52)-1))
-
