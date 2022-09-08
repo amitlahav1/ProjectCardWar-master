@@ -29,4 +29,3 @@ class DeckOfCards:
     def del_one(self):
         # delete a random card from the deck, (delete mean give to player ====> in later function).
         return self.deck52.pop(randint(0, len(self.deck52)-1))
-
