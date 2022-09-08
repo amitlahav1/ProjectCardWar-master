@@ -1,20 +1,18 @@
 from DeckOfCards_Class import DeckOfCards
 from Player_class import Player
 
-
-
 class Cardgame:
     def __init__(self,player1:Player,player2:Player,player_cards_amount = 26):
         self.player1 = Player(player1,player_cards_amount)
         self.player2 = Player(player2,player_cards_amount)
+        self.deck_game=DeckOfCards()
         self.new_game()
 
     def new_game(self,):
-        if self.player1.cards_player_list==[]:
-            deck_game=DeckOfCards()
-            deck_game.cards_shuffle()
-            self.player1.set_hand(deck_game)
-            self.player2.set_hand(deck_game)
+        if self.player1.cards_player_list == []:
+            self.deck_game.cards_shuffle()
+            self.player1.set_hand(self.deck_game)
+            self.player2.set_hand(self.deck_game)
         else:
             print("the game already start")
 

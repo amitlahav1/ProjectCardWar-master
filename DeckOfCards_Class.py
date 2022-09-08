@@ -1,5 +1,6 @@
 from random import randint
 import random
+from Card_Class import Card
 
 class DeckOfCards:
     def __init__(self,):
@@ -7,7 +8,8 @@ class DeckOfCards:
         self.deck52 = []
         for s in "Diamond", "Spade", "Heart", "Club":
             for v in range(1, 14, 1):
-                self.deck52.append((s, v))
+                self.deck52.append(Card(s,v))
+        self.ace_power()
     def __str__(self):
         return f"main deck : {self.deck52}"
     def ace_power(self):

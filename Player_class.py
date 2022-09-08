@@ -4,8 +4,8 @@ from DeckOfCards_Class import DeckOfCards
 
 
 class Player:
-    def __init__(self, name: str, player_cards_amount = 26):
-        if type(name)!=str:
+    def __init__(self, name, player_cards_amount = 26):
+        if (name) =="":
             name = "player1"
         if type(player_cards_amount)!= int:
             player_cards_amount = 26
@@ -16,13 +16,14 @@ class Player:
         self.player_cards_amount = player_cards_amount
         self.cards_player_list = []
 
-
+    def __str__(self):
+        return f"player_1 name : {self.name},the cards:{self.cards_player_list}"
 
 # the player get the amount of cards that he should :  10-26 cards :)
     def set_hand(self,deck:DeckOfCards):
 
         for i in range (self.player_cards_amount):
-            self.cards_player_list.append(deck.del_one())
+            self.add_card(deck.del_one())
 
 
 #get a random card  and deletes it

@@ -16,6 +16,8 @@ class Card:
 
     def __str__(self):
         return f"{self.value} of {self.suit}"
+    def __repr__(self):
+        return f"{self.value} of {self.suit}"
 
     def __eq__(self, other):
         if type(other) == Card:
@@ -28,9 +30,7 @@ class Card:
         else:
             raise TypeError("other must to be type card!!!!")
 
-
     def __gt__(self, other):
-
         if type(other) == Card:
             if self.value > other.value:
                 return True
