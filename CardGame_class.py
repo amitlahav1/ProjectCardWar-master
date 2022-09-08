@@ -12,7 +12,7 @@ class Cardgame:
 
     def new_game(self,):
         # setting up new game.
-        if self.player1.cards_player_list == []:    # why not in __init__
+        if self.player1.cards_player_list == []:
             self.deck_game.cards_shuffle()
             self.player1.set_hand(self.deck_game)
             self.player2.set_hand(self.deck_game)
