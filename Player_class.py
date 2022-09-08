@@ -5,7 +5,7 @@ from DeckOfCards_Class import DeckOfCards
 
 class Player:
     def __init__(self, name, player_cards_amount = 26):
-        if (name) =="":
+        if (name) == "":
             name = "player1"
         if type(player_cards_amount)!= int:
             player_cards_amount = 26
@@ -25,15 +25,12 @@ class Player:
         for i in range (self.player_cards_amount):
             self.add_card(deck.del_one())
 
-
-#get a random card  and deletes it
-
+# get a random card  and deletes it
     def get_card(self):
         card_out = self.cards_player_list.pop(randint(0, len(self.cards_player_list) - 1))
         return card_out
-#add a card to your hand
+
+# add a card to your hand
+
     def add_card(self, card : Card):
         self.cards_player_list.append(card)
-
-
-
