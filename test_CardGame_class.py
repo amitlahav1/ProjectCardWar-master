@@ -55,12 +55,16 @@ class TestCardgame(TestCase):
         p2_len = len(self.game.player2.cards_player_list)
         self.assertTrue(p1_len == p2_len)
 
-    # the len of deck id equal. valid
+    # the len of deck equal. p1,p2 get one card to the list .valid
     def test_get_winner_equal_valid_1(self):
-        self.p1 = Player("amit")
-        self.p2 = Player("elior")
-        self.game = Cardgame(self.p1, self.p2)
-        self.assertTrue(self.game.get_winner(), "none")
+        p1 = Player("amit")
+        p2 = Player("elior")
+        card = Card('Diamond', 12)
+        card2 = Card('Diamond', 7)
+        game = Cardgame(p1, p2)
+        game.player1.cards_player_list=[card]
+        game.player2.cards_player_list=[card2]
+        self.assertEqual(game.get_winner(), None)
 
     # player 1 get 2 card. player2 1. player1 need to be winner
     def test_get_winner_player1_bigger_valid_2(self):

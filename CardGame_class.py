@@ -21,10 +21,10 @@ class Cardgame:
 
     def get_winner(self):
         # function that check who is the winner in rge current round.
-        if self.player1.cards_player_list > self.player2.cards_player_list:
+        if len(self.player1.cards_player_list) > len(self.player2.cards_player_list):
             winner = self.player1
             return winner
-        elif self.player1.cards_player_list < self.player2.cards_player_list:
+        elif len(self.player1.cards_player_list) < len(self.player2.cards_player_list):
             winner = self.player2
             return winner
         else:
