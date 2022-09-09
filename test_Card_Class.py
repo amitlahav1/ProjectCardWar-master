@@ -108,8 +108,8 @@ class TestCard(TestCase):
 
 # check if the __gt__ function works appropriate with suits
     def test__gt__invalid_2(self):
-        card1 = Card('Diamond', 13)  # high card
-        card2 = Card('Club', 13)
-        self.assertFalse(card1.value, card2.value)
+        card1 = Card('Diamond', 13)
+        card2 = Card('Club', 13)  # high card
+        self.assertFalse(card1.value > card2.value)
 
 
