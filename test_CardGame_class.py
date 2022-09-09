@@ -1,8 +1,8 @@
-from unittest import TestCase, mock
+from unittest import TestCase
 from DeckOfCards_Class import DeckOfCards
 from Player_class import Player
-from unittest.mock import patch
 from CardGame_class import Cardgame
+from Card_Class import Card
 
 
 class TestCardgame(TestCase):
@@ -62,8 +62,46 @@ class TestCardgame(TestCase):
         self.game = Cardgame(self.p1, self.p2)
         self.assertTrue(self.game.get_winner(), "none")
 
-    # player 1 get one card. player2 zero
+    # player 1 get 2 card. player2 1. player1 need to be winner
     def test_get_winner_player1_bigger_valid_2(self):
-        self.game.player1.cards_player_list = ["Spade", 3]
-        self.assertNotEqual(self.game.get_winner(), self.game.player2)
+        player_1 = Player("amit")
+        player_2 = Player("elior")
+        card = Card('Diamond', 12)
+        card2 = Card('Diamond', 7)
+        game = Cardgame(player_1, player_2)
+        game.player1.cards_player_list = [card, card2]
+        game.player2.cards_player_list = [card]
+        self.assertEqual(game.get_winner(), game.player1)
 
+    # player2 get 2 card , player1 get 1 card . player 2 need to be winner
+    def test_get_winner_player2_valid_3(self):
+        player_1 = Player("amit")
+        player_2 = Player("elior")
+        card = Card('Diamond', 12)
+        card2 = Card('Diamond', 7)
+        game = Cardgame(player_1, player_2)
+        game.player1.cards_player_list = [card]
+        game.player2.cards_player_list = [card, card2]
+        self.assertEqual(game.get_winner(), game.player2)
+
+    # player 1 with one card. player 2 with two card. player2 need to be winner
+    def test_get_winner_invalid_1(self):
+        player_1 = Player("amit")
+        player_2 = Player("elior")
+        card = Card('Diamond', 12)
+        card2 = Card('Diamond', 7)
+        game = Cardgame(player_1, player_2)
+        game.player1.cards_player_list = [card]
+        game.player2.cards_player_list = [card, card2]
+        self.assertNotEqual(game.get_winner(), game.player1)
+
+    # player 1 with two card. player 2 with one card. player1 need to be winner
+    def test_get_winner_invalid_2(self):
+        player_1 = Player("amit")
+        player_2 = Player("elior")
+        card = Card('Diamond', 12)
+        card2 = Card('Diamond', 7)
+        game = Cardgame(player_1, player_2)
+        game.player1.cards_player_list = [card, card2]
+        game.player2.cards_player_list = [card]
+        self.assertNotEqual(game.get_winner(), game.player2)

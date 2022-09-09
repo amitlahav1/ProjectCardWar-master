@@ -31,7 +31,6 @@ class Player:
         card_out = self.cards_player_list.pop(randint(0, len(self.cards_player_list) - 1))
         return card_out
 
-
     def add_card(self, card: Card):
         # add a card to your hand.
         self.cards_player_list.append(card)
