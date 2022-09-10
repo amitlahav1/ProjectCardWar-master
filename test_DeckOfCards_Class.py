@@ -42,9 +42,12 @@ class TestDeckOfCards(TestCase):
     def test_cards_shuffle_valid_1(self):
         self.assertNotEqual(self.deck_valid.cards_shuffle(), self.deck_valid)
 
-    # take out from the deck  card and check that the card dont exist in the deck.valid
+
+    # take out from the deck card and check that the card dont exist in the deck.valid
     def test_del_one_card_valid_1(self):
         self.assertNotIn(self.deck_valid.del_one(), self.deck_valid.deck52)
+
+
 
     # chek if the function del return the card. valid
     def test_return_card_del_valid_2(self):
@@ -52,3 +55,10 @@ class TestDeckOfCards(TestCase):
         with patch('DeckOfCards_Class.DeckOfCards.del_one') as mock_card:
             mock_card.return_value = card_1
             self.assertEqual(self.deck_valid.del_one(), card_1)
+
+    def test_return_card_del_ivalid_2(self):
+        card_1 = Card("Spade", 5)
+        card_2= Card("Spade", 7)
+        with patch('DeckOfCards_Class.DeckOfCards.del_one') as mock_card:
+            mock_card.return_value = card_1
+            self.assertNotEqual(self.deck_valid.del_one(), card_2)

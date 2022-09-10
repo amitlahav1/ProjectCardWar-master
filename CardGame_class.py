@@ -20,7 +20,7 @@ class Cardgame:
             print("the game already start")
 
     def get_winner(self):
-        # function that check who is the winner in rge current round.
+        # function that check who is the winner in the game (len:player list).
         if len(self.player1.cards_player_list) > len(self.player2.cards_player_list):
             winner = self.player1
             return winner
