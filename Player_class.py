@@ -3,6 +3,7 @@ from random import randint
 from DeckOfCards_Class import DeckOfCards
 
 
+
 class Player:
     def __init__(self, name, player_cards_amount=26):
         # define player object in Player class.
@@ -19,7 +20,7 @@ class Player:
 
     def __str__(self):
         # print player object name and his cards.
-        return f"player_1 name : {self.name},the cards:{self.cards_player_list}"
+        return f" {self.name},player cards: {self.cards_player_list}"
 
     def set_hand(self, deck: DeckOfCards):
         # the player get the amount of cards that he should, (10-26 cards) .

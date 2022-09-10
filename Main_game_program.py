@@ -56,22 +56,12 @@ for i in range(10):
 """)
 
 # check who is the winner.
-if count_win_player1 > count_win_player2:
+
+if game.get_winner() == game.player1:
     print(f"the winner in game is ....{player_1.name}, he winner in {count_win_player1} rounds!")
     print(f"the cards of {player_1.name}:,{game.player1.cards_player_list}\nnumber of cards::{len(game.player1.cards_player_list)}")
-
-elif count_win_player1 == count_win_player2:
-    print(f" today its draw!, Let's play another game? ")
-else:
-    print(f"the winner in the game is.... {player_2.name}, he winner in {count_win_player2} rounds!")
-    print(f"the cards of {player_2.name}:,{game.player2.cards_player_list}\nnumber of cards:{len(game.player2.cards_player_list)}")
-
-print("#######################################################3")#fix this!
-if game.get_winner():
-    print(f"the winner in game is ....{player_1.name}, he winner in {count_win_player1} rounds!")
-    print(f"the cards of {player_1.name}:,{game.player1.cards_player_list}\nnumber of cards::{len(game.player1.cards_player_list)}")
-elif:
+elif game.get_winner()== game.player2:
     print(f"the winner in the game is.... {player_2.name}, he winner in {count_win_player2} rounds!")
     print(f"the cards of {player_2.name}:,{game.player2.cards_player_list}\nnumber of cards:{len(game.player2.cards_player_list)}")
 else:
-    print(f" today its draw!, Let's play another game? ")
+    print(" today its draw!, Let's play another game?")
