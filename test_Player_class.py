@@ -25,6 +25,7 @@ class TestPlayer(TestCase):
     def test__init__valid_(self):
         player = Player(123, 26)
         self.assertEqual(player.name, 123)
+
     #  test extreme case
     def test__init__valid_3(self):
         player = Player('elior', 26)
@@ -35,13 +36,16 @@ class TestPlayer(TestCase):
         player = Player('elior', 10)
         self.assertEqual(player.player_cards_amount, 10)
 
+    # test invalid case
     def test__init__invalid_2(self):
         player = Player('elior', 27)
         self.assertEqual(player.player_cards_amount, 26)
 
+    # test invalid case
     def test__init__invalid_3(self):
         player = Player('elior', 9)
         self.assertEqual(player.player_cards_amount, 26)
+
     # test that if the got str then set default 26
     def test__init__invalid_4(self):
         player = Player('elior', '9')
@@ -75,7 +79,6 @@ class TestPlayer(TestCase):
         after_turn_hand = len(self.player.cards_player_list)
 
         self.assertEqual(after_turn_hand + 1, start_hand)
-        card = self.player.get_card()
         self.assertNotIn(self.player.get_card(), self.player.cards_player_list)
 
     # ===============================test_add_card====================================== #
@@ -83,3 +86,9 @@ class TestPlayer(TestCase):
         card = Card('Club', 8)
         self.player.add_card(card)
         self.assertIn(card, self.player.cards_player_list)
+
+    def test_add_card_invalid_1(self):
+        card = Card('Club', 8)
+        card1 = Card('Club', 4)
+        self.player.add_card(card)
+        self.assertNotIn(card1, self.player.cards_player_list)
