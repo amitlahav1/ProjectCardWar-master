@@ -1,15 +1,13 @@
 from unittest import TestCase, mock
-import Player_class
 from DeckOfCards_Class import DeckOfCards
 from Player_class import Player
 from Card_Class import Card
-from random import randint
 
 
 class TestPlayer(TestCase):
 
     # set up
-    def setUp(self) -> None:
+    def setUp(self):
         self.player = Player('elior', 26)
         self.deck52 = DeckOfCards()
 
@@ -27,11 +25,12 @@ class TestPlayer(TestCase):
     def test__init__valid_(self):
         player = Player(123, 26)
         self.assertEqual(player.name, 123)
-
+    #  test extreme case
     def test__init__valid_3(self):
         player = Player('elior', 26)
         self.assertEqual(player.player_cards_amount, 26)
 
+    #  test extreme case
     def test__init__valid_4(self):
         player = Player('elior', 10)
         self.assertEqual(player.player_cards_amount, 10)
@@ -43,7 +42,7 @@ class TestPlayer(TestCase):
     def test__init__invalid_3(self):
         player = Player('elior', 9)
         self.assertEqual(player.player_cards_amount, 26)
-
+    # test that if the got str then set default 26
     def test__init__invalid_4(self):
         player = Player('elior', '9')
         self.assertEqual(player.player_cards_amount, 26)
@@ -55,7 +54,7 @@ class TestPlayer(TestCase):
     @mock.patch('DeckOfCards_Class.DeckOfCards.del_one', return_value=('Diamond', 2))
     def test_set_hand_valid_1(self, del_mock):
         self.player.set_hand(self.deck52)
-        self.assertTrue(self.player.cards_player_list.count(('Diamond', 2)), 10)
+        self.assertTrue(('Diamond', 2) in self.player.cards_player_list)
         self.assertEqual(len(self.player.cards_player_list), self.player.player_cards_amount)
 
     # test the amount of cards that this function gives to this player
@@ -63,7 +62,7 @@ class TestPlayer(TestCase):
     @mock.patch('DeckOfCards_Class.DeckOfCards.del_one', return_value=('Diamond', 2))
     def test_set_hand_invalid_1(self, del_mock):
         self.player.set_hand(self.deck52)
-        self.assertFalse(self.player.cards_player_list.count(('Club', 5)), 10)
+        self.assertFalse(('Diamond', 5) in self.player.cards_player_list)
         self.assertEqual(len(self.player.cards_player_list), self.player.player_cards_amount)
 
     # =======================================test_get_card================================= #
