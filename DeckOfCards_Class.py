@@ -17,7 +17,7 @@ class DeckOfCards:
         return f"main deck : {self.deck52}"
 
     def ace_power(self):
-        # make sure that the ACE is the strongest card in the game.
+        # make sure that the ACE is the strongest card in the deck.
         for card in self.deck52:
             if card.value == 1:
                 card.value = 14
