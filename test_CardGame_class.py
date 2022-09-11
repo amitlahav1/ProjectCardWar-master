@@ -44,19 +44,25 @@ class TestCardgame(TestCase):
     # after the cards are dealt, the players' decks should be equal
     def test_new_game_valid_1(self):
         self.game = Cardgame("amit", "elior", 26)
-        self.game.new_game()
         p1_len = len(self.game.player1.cards_player_list)
         p2_len = len(self.game.player2.cards_player_list)
         self.assertTrue(p1_len == p2_len)
 
     # after the cards are dealt, the players' decks should be equal
-    def test_new_game_valid_1(self):
+    def test_new_game_valid_2(self):
         self.game = Cardgame("amit", "elior", 12)
-        self.game.new_game()
         p1_len = len(self.game.player1.cards_player_list)
         p2_len = len(self.game.player2.cards_player_list)
         self.assertTrue(p1_len == p2_len)
 
+    def test_new_game_invalid_1(self):
+        self.game = Cardgame("amit", "elior", 12)
+        card = Card('Diamond', 12)
+        card2 = Card('Diamond', 7)
+        self.game.player1.cards_player_list = [card]
+        self.game.player2.cards_player_list = [card2]
+        with self.assertRaises(TypeError):
+            (self.game.new_game())
 
     # the len of deck equal. p1,p2 get one card to the list .valid
     def test_get_winner_equal_valid_1(self):
@@ -65,8 +71,8 @@ class TestCardgame(TestCase):
         card = Card('Diamond', 12)
         card2 = Card('Diamond', 7)
         game = Cardgame(p1, p2)
-        game.player1.cards_player_list=[card]
-        game.player2.cards_player_list=[card2]
+        game.player1.cards_player_list = [card]
+        game.player2.cards_player_list = [card2]
         self.assertEqual(game.get_winner(), None)
 
     # player 1 get 2 card. player2 1. player1 need to be winner

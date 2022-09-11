@@ -17,7 +17,7 @@ class Cardgame:
             self.player1.set_hand(self.deck_game)
             self.player2.set_hand(self.deck_game)
         else:
-            print("the game already start")
+            raise TypeError("the game already start")
 
     def get_winner(self):
         # function that check who is the winner in the game (len:player list).
