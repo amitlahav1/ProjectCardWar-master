@@ -55,7 +55,7 @@ class TestCardgame(TestCase):
         p2_len = len(self.game.player2.cards_player_list)
         self.assertTrue(p1_len == p2_len)
 
-#put cards in the list og players and try to do new game.invalid
+    #put cards in the list og players and try to do new game.invalid
     def test_new_game_invalid_1(self):
         self.game = Cardgame("amit", "elior", 12)
         card = Card('Diamond', 12)
