@@ -40,8 +40,24 @@ class TestDeckOfCards(TestCase):
     # test that deck after the shuffle not same
 
     def test_cards_shuffle_valid_1(self):
-        self.assertNotEqual(self.deck_valid.cards_shuffle(), self.deck_valid)
+        self.deck_valid.cards_shuffle()
+        deck_2 = DeckOfCards()
+        self.assertNotEqual(self.deck_valid.deck52, deck_2.deck52)
 
+
+    #after the shuffle the len need to be equal ,52 cards. all the 52 cards in list.
+    def test_cards_shuffle_valid_2(self):
+        self.deck_valid.cards_shuffle()
+        self.assertEqual(len(self.deck_valid.deck52), 52)
+
+    #invalid. check if the len of list change
+    def test_shuffle_invalid_1(self):
+        self.deck_valid.cards_shuffle()
+        self.assertNotEqual(len(self.deck_valid.deck52),53)
+
+    def test_shuffle_invalid_2(self):
+        self.deck_valid.cards_shuffle()
+        self.assertNotEqual(len(self.deck_valid.deck52),51)
 
     # take out from the deck card and check that the card dont exist in the deck.valid
     def test_del_one_card_valid_1(self):
